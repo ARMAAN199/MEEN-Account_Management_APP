@@ -1,0 +1,53 @@
+.navbar {
+  border-radius: 10px;
+  background-color: rgb(12, 12, 12);
+}
+
+h3 {
+  color: wheat;
+}
+
+.sidepanel {
+  width: 20%;
+  z-index: 1;
+  height: 90vh;
+  top: 0;
+  left: 0;
+  background-color: brown;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidepanel li {
+  font-size: 1rem;
+  padding: 2px 8px 8px 32px;
+  text-decoration: none;
+  color: wheat;
+  /* //color: #11cdef; */
+  display: block;
+  transition: 0.3s;
+  border-bottom: white solid 1px;
+}
+
+.sidepanel li:hover {
+  color: #f1f1f1;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  color: wheat;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
