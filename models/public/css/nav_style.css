@@ -51,3 +51,21 @@ ul {
 .openbtn:hover {
   background-color: #444;
 }
+
+@media only screen and (max-width: 1050px) {
+  .sidepanel {
+    width: 100%;
+    height: fit-content;
+    overflow-x: scroll;
+    display: flex;
+  }
+  .sidepanel li {
+    font-size: 0.7rem;
+  }
+  ul {
+    float: left;
+  }
+  #bookworm {
+    width: 100%;
+  }
+}
