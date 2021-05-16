@@ -278,3 +278,50 @@ function displaytrans(x){
       })       
 }  
 
+function printtransactions(transactions,x){
+       console.log(transactions)
+       var transtable = document.getElementById("customer_table");
+       document.getElementById("cust_name").innerHTML=customers[x].name;
+       document.getElementById("cust_pagenum").innerHTML = customers[x].pagenumber;
+       $("#customer_table > tr").remove();
+       $("#transrow").remove();
+       $("#add_trans").val(customers[x]._id);
+       $("#edit_delete_cust").remove();
+       $("#cust_name").before("<button id='edit_delete_cust'>☰</button>")
+       $("#edit_delete_cust").click(()=>{
+         edit_del_cust(x);
+       })
+       var balance = 0;
+       for (i = 0; i <transactions.length ; i++) {
+        
+        var tr = document.createElement('tr');
+        tr.setAttribute("id","trans_row");
+          if (transactions[i].type == 0)
+          {
+            balance = balance + transactions[i].amount;
+            var content = [(transactions[i].date).substr(5,5) , "item", transactions[i].amount, "00", "", "", "Cr", balance, "00"]
+          }
+          else
+          {
+            balance = balance - transactions[i].amount;
+            var content = [(transactions[i].date).substr(5,5) , "item", "", "", transactions[i].amount, "00", "Cr", balance, "00"]            
+          }
+          printrow(tr , content);
+          if(balance<0)
+          {
+            tr.style.backgroundColor = "#FF4500";
+            tr.style.color="white";
+          }
+          var edit_trans = document.createElement('span');
+          edit_trans.innerHTML= "☰";
+          edit_trans.setAttribute("onClick", 'edittrans("'+ [transactions[i]._id,transactions[i].customerid] +'")');
+          var delete_trans = document.createElement('i');
+          delete_trans.setAttribute('class', "fa fa-trash");
+          delete_trans.setAttribute('aria-hidden', "true");
+          delete_trans.setAttribute("onClick", 'deletetrans("'+ [transactions[i]._id,transactions[i].customerid] +'")');
+          tr.appendChild(edit_trans);
+          tr.appendChild(delete_trans);
+          customer_table.appendChild(tr);
+    }
+  }
+
