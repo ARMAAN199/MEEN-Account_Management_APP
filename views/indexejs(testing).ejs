@@ -354,3 +354,35 @@ function edit_del_cust(x){
           }
         });      
   })
+  $("#edit_cust").click(function(e){
+    e.preventDefault();
+    $("#pop_up_edit").hide();    
+      var custid = $('#edit_customer').val();
+      var new_name = $("#edit_name").val();
+      var new_firmname = $("#edit_firmname").val();
+      var new_pagenumber = $("#edit_pagenumber").val();
+      var chgcode = 0;
+      if(new_name != customers[x].name)
+      {
+        chgcode = 1;
+        if(new_pagenumber != customers[x].pagenumber)
+        {
+          chgcode = 3;
+        }     
+      }
+      else if(new_pagenumber != customers[x].pagenumber)
+        {
+          chgcode = 2;
+        }  
+      console.log("Editing User with Id: " + custid);
+      $.ajax
+        ({
+          type: "PUT",
+          url: "/registercust/"+custid+"/"+chgcode,
+          data: { "name":new_name, "firmname":new_firmname, "pagenumber": new_pagenumber},
+          success: function (data) {
+            console.log(data);
+          }
+        });
+  })  
+}
