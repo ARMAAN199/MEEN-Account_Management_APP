@@ -386,3 +386,22 @@ function edit_del_cust(x){
         });
   })  
 }
+function edittrans(transactionid){
+console.log("Editing Transaction with Id: "+ transactionid.slice(0,24));
+$("#pop_up_edit2").show();
+$("#close_edit2").click(()=>{$("#pop_up_edit2").hide();})
+$.ajax
+        ({
+          type: "POST",
+          url: "/gettransaction/"+transactionid.slice(0,24),
+          success: function (data) {
+            console.log(data);
+            $("#edit_transdate").val(data.date);
+            $("#edit_transamount").val(data.amount);
+            if(data.type==0)
+            $("#edit_transtype0").prop( "checked", true );
+            else
+            $("#edit_transtype1").prop( "checked", true );
+          }
+      })
+
