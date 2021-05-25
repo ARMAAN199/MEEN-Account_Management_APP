@@ -439,3 +439,38 @@ console.log("Editing Transaction with Id: " + transactionid.slice(0,24));
 
 }
 
+function deletetrans(transactionid){
+  console.log("Deleting Transaction with Id: "+ transactionid.slice(0,24));
+  $.ajax
+        ({
+          type: "DELETE",
+          url: "/addtransaction/"+transactionid.slice(0,24),
+          success: function (data) {
+            console.log(data);
+            var custid = transactionid.slice(25,49);
+        for (var i=0; i<customers.length; i++)
+        if (customers[i]._id == custid)
+        {var x = i;
+        break;
+      }
+    $.ajax({
+          type:'POST',
+          url: '/get_customer_transactions/' + custid,
+      }).done(function(result){
+         printtransactions(result,x);
+         console.log("Reprinted New")
+      }).fail(function(err){
+          console.log(err);
+      })    
+          }
+        });  
+
+}
+
+
+
+
+</script>
+
+</html>
+
