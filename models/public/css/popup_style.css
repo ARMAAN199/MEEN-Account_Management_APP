@@ -1,0 +1,37 @@
+#pop_up_edit,
+#pop_up_edit2 {
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+#pop_content,
+#pop_content2 {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+#close_edit2,
+#close_edit {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+#close_edit:hover,
+#close_edit2:hover,
+#close_edit:focus,
+#close_edit2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
