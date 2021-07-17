@@ -1,0 +1,43 @@
+#cust_name{
+    width: 70%;
+    float: left;
+    border-bottom: 1px solid black;
+    color:brown;
+}
+#cust_pagenum{
+    width: 15%;
+    border-left: 1px double black;
+    float: right;
+    color: brown;
+}
+#edit_delete_cust{
+    float: left; 
+    background-color: transparent;
+    border: none;
+    size: 50%; 
+    color: brown;
+}
+
+table{
+    border: 4px double black;
+    width:106%;
+    margin-left: -3%;
+    font-size: 0.9vw;
+    font-family: 'Fjalla One', sans-serif;
+}
+td, th{
+    border: 0.5px  outset rgb(61, 33, 33);
+}
+
+input{
+    width: 100%;
+    
+}
+#addtrans{
+    background-color: transparent;
+    size: 50%;
+}
+
+.fa, .fa-trash{
+    font-size: 150%;
+}
