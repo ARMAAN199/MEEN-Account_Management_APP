@@ -38,4 +38,18 @@ passport.use('local-signup', new LocalStrategy({
         // check to see if theres already a user with that email
         if (user) {
            return done(null, false, { message: 'A User with the following Email/Username is Already Present' })
-        } else {  
+        } else {               const hashedPassword = await bcrypt.hash(password, 10)
+            var newUser            = new User();
+
+            newUser.name    = req.body.name;
+            newUser.firmname = req.body.firmname;
+            newUser.username    = email;
+            newUser.password = hashedPassword;
+            newUser.sub    = false;
+            newUser.save(function(err) {
+                if (err) {
+                    console.log(err);
+                }
+                return done(null, newUser);
+            });
+        }
