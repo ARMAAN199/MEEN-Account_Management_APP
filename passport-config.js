@@ -72,3 +72,20 @@ passport.use('local-signup', new LocalStrategy({
   
     // find a user whose email is the same as the forms email
     // we are checking to see if the user trying to login already exists
+    User.findOne({ 'username' :  email }, async function(err, user) {
+        // if there are any errors, return the error before anything else
+        if (err)
+            return done(err);
+  
+        // if no user is found, return the message
+        if (!user)
+        return done(null, false, { message: 'No User Found With the Given Username/Email' }) // req.flash is the way to set flashdata using connect-flash
+        
+        // if the user is found but the password is wrong
+        if (!await bcrypt.compare(password, user.password))
+        return done(null, false, { message: 'Oops! Password is incorrect' }) // create the loginMessage and save it to session as flashdata
+        //if(user.local.isprofile == 'yes')
+        return done(null,user);
+  
+  })
+  }));
