@@ -47,3 +47,18 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
+
+
+app.get('/', checkAuthenticated, (req, res) => {
+  res.render('index.ejs', { user: req.user })
+})
+
+app.get('/login', checkNotAuthenticated, (req, res) => {
+  res.render('login.ejs')
+})
+
+
+
+app.post('/login', checkNotAuthenticated, passport.authenticate('local-login', {
+        
+      successRedirect : '/', // redirect to the secure profile section
