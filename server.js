@@ -48,17 +48,33 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
+app.get("/", checkAuthenticated, (req, res) => {
+  res.render("index.ejs", { user: req.user });
+});
 
-app.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { user: req.user })
-})
+app.get("/login", checkNotAuthenticated, (req, res) => {
+  res.render("login.ejs");
+});
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login.ejs')
-})
+app.post(
+  "/login",
+  checkNotAuthenticated,
+  passport.authenticate("local-login", {
+    successRedirect: "/", // redirect to the secure profile section
+    failureRedirect: "/login", // redirect back to the signup page if there is an error
+    failureFlash: true, // allow flash messages
+  }),
+  function (req, res) {
+    //if(req.user.local.isprofile=='no')
+    //    res.redirect('/profile')
+    //else {
+    res.render("profile_book.ejs", {
+      user: req.user, // get the user out of session and pass to template
+    });
+  }
+  //}
+);
 
-
-
-app.post('/login', checkNotAuthenticated, passport.authenticate('local-login', {
-        
-      successRedirect : '/', // redirect to the secure profile section
+app.get("/register", checkNotAuthenticated, (req, res) => {
+  res.render("register.ejs");
+});
