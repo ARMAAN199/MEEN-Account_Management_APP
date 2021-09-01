@@ -78,3 +78,17 @@ app.post(
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("register.ejs");
 });
+
+app.post(
+  "/register",
+  passport.authenticate("local-signup", {
+    successRedirect: "/", // redirect to the secure profile section
+    failureRedirect: "/register", // redirect back to the signup page if there is an error
+    failureFlash: true, // allow flash messages
+  }),
+  function (req, res) {
+    res.render("/login", {
+      user: req.user, // get the user out of session and pass to template
+    });
+  }
+);
