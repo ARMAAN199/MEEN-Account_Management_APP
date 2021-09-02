@@ -92,3 +92,22 @@ app.post(
     });
   }
 );
+
+app.get("/registercust", checkAuthenticated, (req, res) => {
+  res.render("customer_register.ejs");
+});
+
+app.post(
+  "/registercust",
+  checkAuthenticated,
+  passport.authenticate("local-custsignup", {
+    successRedirect: "/", // redirect to the secure profile section
+    failureRedirect: "/registercust", // redirect back to the signup page if there is an error
+    failureFlash: true, // allow flash messages
+  }),
+  function (req, res) {
+    res.render("/login", {
+      user: req.user, // get the user out of session and pass to template
+    });
+  }
+);
