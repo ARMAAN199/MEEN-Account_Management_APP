@@ -97,6 +97,21 @@ app.get("/registercust", checkAuthenticated, (req, res) => {
   res.render("customer_register.ejs");
 });
 
+app.delete("/registercust/:custid", checkAuthenticated, function (req, res) {
+  Customer.deleteOne({ _id: req.params.custid }, function (err) {
+    if (err) return err;
+    console.log("Successful deletion of customer id" + req.params.custid);
+    Transaction.deleteMany({ customerid: req.params.custid })
+      .then(function () {
+        console.log("Transactions also deleted"); // Success
+        res.send("Customer And Transactions Deleted");
+      })
+      .catch(function (error) {
+        console.log(error); // Failure
+      });
+  });
+});
+
 app.post(
   "/registercust",
   checkAuthenticated,
