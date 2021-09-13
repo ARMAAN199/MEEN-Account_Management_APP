@@ -126,3 +126,27 @@ app.post(
     });
   }
 );
+
+app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res) { 
+  if(req.params.chgcode == 0){
+      custedit()
+  }
+  if (req.params.chgcode == 1){
+    Customer.findOne( {$and: [ { 'name' :  req.body.name } , {'userid' : req.user._id} ]} , function(err, customer){
+      if (err) return err;
+      if (customer) res.send("Customer With Entered Name Exists");
+      else custedit()
+    })
+  }
+  if (req.params.chgcode == 2){
+    Customer.findOne( {$and: [ { 'pagenumber' :  req.body.pagenumber } , {'userid' : req.user._id} ]} , function(err, customer){
+      if (err) return err;
+      if (customer) res.send("Customer With Entered PageNumber Exists");
+      else custedit()
+    })
+  }
+  if (req.params.chgcode == 3){
+    Customer.findOne( {$and: [ { 'name' :  req.body.name } , {'userid' : req.user._id} ]} , function(err, customer){
+      if (err) return err;
+      if (customer) res.send("Customer With Entered Name Exists");
+      else {
