@@ -127,34 +127,79 @@ app.post(
   }
 );
 
-app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res) { 
-  if(req.params.chgcode == 0){
-      custedit()
-  }
-  if (req.params.chgcode == 1){
-    Customer.findOne( {$and: [ { 'name' :  req.body.name } , {'userid' : req.user._id} ]} , function(err, customer){
-      if (err) return err;
-      if (customer) res.send("Customer With Entered Name Exists");
-      else custedit()
-    })
-  }
-  if (req.params.chgcode == 2){
-    Customer.findOne( {$and: [ { 'pagenumber' :  req.body.pagenumber } , {'userid' : req.user._id} ]} , function(err, customer){
-      if (err) return err;
-      if (customer) res.send("Customer With Entered PageNumber Exists");
-      else custedit()
-    })
-  }
-  if (req.params.chgcode == 3){
-    Customer.findOne( {$and: [ { 'name' :  req.body.name } , {'userid' : req.user._id} ]} , function(err, customer){
-      if (err) return err;
-      if (customer) res.send("Customer With Entered Name Exists");
-      else {
-        Customer.findOne( {$and: [ { 'pagenumber' :  req.body.pagenumber } , {'userid' : req.user._id} ]} , function(err, customer){
+app.put(
+  "/registercust/:custid/:chgcode",
+  checkAuthenticated,
+  function (req, res) {
+    if (req.params.chgcode == 0) {
+      custedit();
+    }
+    if (req.params.chgcode == 1) {
+      Customer.findOne(
+        { $and: [{ name: req.body.name }, { userid: req.user._id }] },
+        function (err, customer) {
+          if (err) return err;
+          if (customer) res.send("Customer With Entered Name Exists");
+          else custedit();
+        }
+      );
+    }
+    if (req.params.chgcode == 2) {
+      Customer.findOne(
+        {
+          $and: [{ pagenumber: req.body.pagenumber }, { userid: req.user._id }],
+        },
+        function (err, customer) {
           if (err) return err;
           if (customer) res.send("Customer With Entered PageNumber Exists");
-          else custedit()
+          else custedit();
+        }
+      );
+    }
+    if (req.params.chgcode == 3) {
+      Customer.findOne(
+        { $and: [{ name: req.body.name }, { userid: req.user._id }] },
+        function (err, customer) {
+          if (err) return err;
+          if (customer) res.send("Customer With Entered Name Exists");
+          else {
+            Customer.findOne(
+              {
+                $and: [
+                  { pagenumber: req.body.pagenumber },
+                  { userid: req.user._id },
+                ],
+              },
+              function (err, customer) {
+                if (err) return err;
+                if (customer)
+                  res.send("Customer With Entered PageNumber Exists");
+                else custedit();
+              }
+            );
+          }
+        }
+      );
+    }
+    function custedit() {
+      console.log("in customer edit");
+      Customer.updateOne(
+        { _id: req.params.custid },
+        {
+          $set: {
+            name: req.body.name,
+            firmname: req.body.firmname,
+            pagenumber: req.body.pagenumber,
+          },
+        }
+      )
+        .then(function () {
+          console.log("Customer Updated"); // Success
+          res.send("Customer Updated");
         })
-      }
-    })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
+);
