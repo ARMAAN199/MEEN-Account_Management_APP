@@ -203,3 +203,21 @@ app.put(
     }
   }
 );
+
+app.post(
+  "/get_customer_list/:userid",
+  checkAuthenticated,
+  function (req, res, done) {
+    Customer.find({ userid: req.params.userid })
+      .sort({ pagenumber: 1 })
+      .exec(function (err, customers) {
+        if (err) return err;
+        if (customers) {
+          res.status(200);
+          console.log(customers);
+          res.send(customers);
+          res.end();
+        }
+      });
+  }
+);
