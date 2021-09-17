@@ -221,3 +221,21 @@ app.post(
       });
   }
 );
+
+app.post(
+  "/get_customer_transactions/:customerid",
+  checkAuthenticated,
+  function (req, res, done) {
+    Transaction.find({
+      $and: [{ userid: req.user._id }, { customerid: req.params.customerid }],
+    }).exec(function (err, transactions) {
+      if (err) return err;
+      if (transactions) {
+        console.log(req.user._id + " " + req.params.customerid);
+        res.status(200);
+        res.send(transactions);
+        res.end();
+      }
+    });
+  }
+);
