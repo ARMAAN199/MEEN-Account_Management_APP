@@ -239,3 +239,25 @@ app.post(
     });
   }
 );
+app.post(
+  "/addtransaction/:customerid",
+  checkAuthenticated,
+  function (req, res, done) {
+    console.log(req);
+    const transaction = new Transaction({
+      userid: req.user._id,
+      customerid: req.params.customerid,
+      date: new Date(req.body.date).toISOString(),
+      amount: req.body.amount,
+      type: req.body.type,
+    });
+    try {
+      const a1 = transaction.save();
+      res.status(200);
+      res.send("Your data is safe with you. FU");
+      res.end();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
