@@ -261,3 +261,27 @@ app.post(
     }
   }
 );
+app.put(
+  "/addtransaction/:transactionid",
+  checkAuthenticated,
+  function (req, res, done) {
+    console.log("in transaction edit");
+    Transaction.updateOne(
+      { _id: req.params.transactionid },
+      {
+        $set: {
+          date: req.body.date,
+          amount: req.body.amount,
+          type: req.body.type,
+        },
+      }
+    )
+      .then(function () {
+        console.log("Transaction Updated"); // Success
+        res.send("Transaction Updated");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+);
