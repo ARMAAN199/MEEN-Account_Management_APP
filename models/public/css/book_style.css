@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(12, 12, 12);
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #11cdef;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #11cdef;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+:root {
+  --purplish: #3d3d3d;
+  --darkpurple: #202020;
+  --fronttext: white;
+  --initialdelay: 0.3s;
+  --delay: 0.11s;
+  --bgtext: #202020;
+}
