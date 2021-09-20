@@ -285,3 +285,34 @@ app.put(
       });
   }
 );
+
+app.delete(
+  "/addtransaction/:transactionid",
+  checkAuthenticated,
+  function (req, res, done) {
+    console.log(req);
+    Transaction.deleteOne({ _id: req.params.transactionid })
+      .then(function () {
+        console.log("Transaction deleted"); // Success
+        res.send("Transaction With id " + req.params.transactionid + "Deleted");
+      })
+      .catch(function (error) {
+        console.log(error); // Failure
+      });
+  }
+);
+
+app.post(
+  "/gettransaction/:transactionid",
+  checkAuthenticated,
+  function (req, res, done) {
+    console.log(req);
+    Transaction.findOne({ _id: req.params.transactionid }).exec(function (
+      err,
+      transaction
+    ) {
+      if (err) throw err;
+      res.send(transaction);
+    });
+  }
+);
