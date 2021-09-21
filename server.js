@@ -316,3 +316,24 @@ app.post(
     });
   }
 );
+/*
+app.post('/get_customer_list',function (req,res,done) {      
+      Customer.findOne({'userid' : req.user.id},function (err,customer) {
+          if(err)
+              return err;
+          if(customer) {
+              var data={
+                  confession:userprofile.book.confession,
+                  confession1:userprofile.book.confession1,
+                  label:userprofile.book.label_con1
+              };
+              userprofile.save(function (err) {
+                  if(err)
+                      console.log(err);
+              })
+              res.send(data);
+
+          }
+
+      })
+});
