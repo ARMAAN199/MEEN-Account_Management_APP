@@ -364,3 +364,52 @@ app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res)
 // })
 
 */
+/*
+app.post('/get_customer_list',function (req,res,done) {      
+      Customer.findOne({'userid' : req.user.id},function (err,customer) {
+          if(err)
+              return err;
+          if(customer) {
+              var data={
+                  confession:userprofile.book.confession,
+                  confession1:userprofile.book.confession1,
+                  label:userprofile.book.label_con1
+              };
+              userprofile.save(function (err) {
+                  if(err)
+                      console.log(err);
+              })
+              res.send(data);
+
+          }
+
+      })
+});
+
+app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res) { 
+
+//     else{
+//       Customer.findOne( {$and: [ { 'pagenumber' :  req.body.pagenumber } , {   'name': { $ne: req.body.name} } ,{'userid' : req.user._id} ]} , function(err,customer){
+//         if (err) return err;
+//         if (customer) res.send("Customer With Entered PageNumber Exists");
+//         else{
+//           console.log("in customer edit else");
+//           Customer.updateOne({ '_id': req.params.custid },{
+//             $set: {
+//               'name': req.body.name,
+//               'firmname': req.body.firmname,
+//               'pagenumber': req.body.pagenumber,
+//             }
+//           }).then(function(){
+//             console.log("Customer Updated"); // Success 
+//             res.send("Customer Updated");    
+//           }).catch(function(error){
+//             console.log(error);
+//           })
+//         }        
+//       })
+//     }
+//   })
+// })
+
+*/
