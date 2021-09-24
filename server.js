@@ -413,3 +413,16 @@ app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res)
 // })
 
 */
+
+app.delete("/logout", checkAuthenticated, (req, res) => {
+  req.logOut();
+  res.redirect("/login");
+});
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  res.redirect("/login");
+}
