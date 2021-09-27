@@ -27,10 +27,10 @@ const connectionParams = {
 mongoose
   .connect(url, connectionParams)
   .then(() => {
-    console.log("Connected to database ");
+    //console.log("Connected to database ");
   })
   .catch((err) => {
-    console.error(`Error connecting to the database. \n${err}`);
+    //console.error(`Error connecting to the database. \n${err}`);
   });
 
 app.use(express.static(__dirname + "/public"));
@@ -100,14 +100,14 @@ app.get("/registercust", checkAuthenticated, (req, res) => {
 app.delete("/registercust/:custid", checkAuthenticated, function (req, res) {
   Customer.deleteOne({ _id: req.params.custid }, function (err) {
     if (err) return err;
-    console.log("Successful deletion of customer id" + req.params.custid);
+    //console.log("Successful deletion of customer id" + req.params.custid);
     Transaction.deleteMany({ customerid: req.params.custid })
       .then(function () {
-        console.log("Transactions also deleted"); // Success
+        //console.log("Transactions also deleted"); // Success
         res.send("Customer And Transactions Deleted");
       })
       .catch(function (error) {
-        console.log(error); // Failure
+        //console.log(error); // Failure
       });
   });
 });
@@ -182,7 +182,7 @@ app.put(
       );
     }
     function custedit() {
-      console.log("in customer edit");
+      //console.log("in customer edit");
       Customer.updateOne(
         { _id: req.params.custid },
         {
@@ -194,11 +194,11 @@ app.put(
         }
       )
         .then(function () {
-          console.log("Customer Updated"); // Success
+          //console.log("Customer Updated"); // Success
           res.send("Customer Updated");
         })
         .catch(function (error) {
-          console.log(error);
+          //console.log(error);
         });
     }
   }
@@ -214,7 +214,7 @@ app.post(
         if (err) return err;
         if (customers) {
           res.status(200);
-          console.log(customers);
+          //console.log(customers);
           res.send(customers);
           res.end();
         }
@@ -231,7 +231,7 @@ app.post(
     }).exec(function (err, transactions) {
       if (err) return err;
       if (transactions) {
-        console.log(req.user._id + " " + req.params.customerid);
+        //console.log(req.user._id + " " + req.params.customerid);
         res.status(200);
         res.send(transactions);
         res.end();
@@ -243,7 +243,7 @@ app.post(
   "/addtransaction/:customerid",
   checkAuthenticated,
   function (req, res, done) {
-    console.log(req);
+    //console.log(req);
     const transaction = new Transaction({
       userid: req.user._id,
       customerid: req.params.customerid,
@@ -257,7 +257,7 @@ app.post(
       res.send("Your data is safe with you. FU");
       res.end();
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   }
 );
@@ -265,7 +265,7 @@ app.put(
   "/addtransaction/:transactionid",
   checkAuthenticated,
   function (req, res, done) {
-    console.log("in transaction edit");
+    //console.log("in transaction edit");
     Transaction.updateOne(
       { _id: req.params.transactionid },
       {
@@ -277,11 +277,11 @@ app.put(
       }
     )
       .then(function () {
-        console.log("Transaction Updated"); // Success
+        //console.log("Transaction Updated"); // Success
         res.send("Transaction Updated");
       })
       .catch(function (error) {
-        console.log(error);
+        //console.log(error);
       });
   }
 );
@@ -290,14 +290,14 @@ app.delete(
   "/addtransaction/:transactionid",
   checkAuthenticated,
   function (req, res, done) {
-    console.log(req);
+    //console.log(req);
     Transaction.deleteOne({ _id: req.params.transactionid })
       .then(function () {
-        console.log("Transaction deleted"); // Success
+        //console.log("Transaction deleted"); // Success
         res.send("Transaction With id " + req.params.transactionid + "Deleted");
       })
       .catch(function (error) {
-        console.log(error); // Failure
+        //console.log(error); // Failure
       });
   }
 );
@@ -306,7 +306,7 @@ app.post(
   "/gettransaction/:transactionid",
   checkAuthenticated,
   function (req, res, done) {
-    console.log(req);
+    //console.log(req);
     Transaction.findOne({ _id: req.params.transactionid }).exec(function (
       err,
       transaction
@@ -329,7 +329,7 @@ app.post('/get_customer_list',function (req,res,done) {
               };
               userprofile.save(function (err) {
                   if(err)
-                      console.log(err);
+                      //console.log(err);
               })
               res.send(data);
 
@@ -344,7 +344,7 @@ app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res)
 //         if (err) return err;
 //         if (customer) res.send("Customer With Entered PageNumber Exists");
 //         else{
-//           console.log("in customer edit else");
+//           //console.log("in customer edit else");
 //           Customer.updateOne({ '_id': req.params.custid },{
 //             $set: {
 //               'name': req.body.name,
@@ -352,10 +352,10 @@ app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res)
 //               'pagenumber': req.body.pagenumber,
 //             }
 //           }).then(function(){
-//             console.log("Customer Updated"); // Success 
+//             //console.log("Customer Updated"); // Success 
 //             res.send("Customer Updated");    
 //           }).catch(function(error){
-//             console.log(error);
+//             //console.log(error);
 //           })
 //         }        
 //       })
@@ -377,7 +377,7 @@ app.post('/get_customer_list',function (req,res,done) {
               };
               userprofile.save(function (err) {
                   if(err)
-                      console.log(err);
+                      //console.log(err);
               })
               res.send(data);
 
@@ -393,7 +393,7 @@ app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res)
 //         if (err) return err;
 //         if (customer) res.send("Customer With Entered PageNumber Exists");
 //         else{
-//           console.log("in customer edit else");
+//           //console.log("in customer edit else");
 //           Customer.updateOne({ '_id': req.params.custid },{
 //             $set: {
 //               'name': req.body.name,
@@ -401,10 +401,10 @@ app.put('/registercust/:custid/:chgcode', checkAuthenticated, function (req,res)
 //               'pagenumber': req.body.pagenumber,
 //             }
 //           }).then(function(){
-//             console.log("Customer Updated"); // Success 
+//             //console.log("Customer Updated"); // Success 
 //             res.send("Customer Updated");    
 //           }).catch(function(error){
-//             console.log(error);
+//             //console.log(error);
 //           })
 //         }        
 //       })
