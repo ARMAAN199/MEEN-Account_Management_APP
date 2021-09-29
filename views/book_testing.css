@@ -50,3 +50,40 @@ body {
   width: 46%;
   height: 95%;
 }
+
+.rightpage {
+  left: 50%;
+}
+
+.coverbottom {
+  z-index: 0;
+}
+.leftpage {
+  z-index: 2;
+}
+.rightpage {
+  z-index: 2;
+}
+
+.covertop,
+.page,
+.coverbottom {
+  position: absolute;
+  padding: 1rem;
+  transform-origin: 100% 100%;
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset 3px 0px 20px rgba(0, 0, 0, 0.2),
+    0px 0px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+}
+
+.page {
+  transform-origin: 104% 100%;
+}
+
+.rightpage {
+  border-radius: 0 5px 5px 0;
+  transform-origin: -4% 100%;
+  display: none;
+}
