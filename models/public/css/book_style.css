@@ -116,3 +116,28 @@ body {
 #page10 {
   z-index: 4;
 }
+
+@keyframes bookCover {
+  0% {
+    z-index: 10;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 0;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  #bookworm {
+    display: block;
+    width: 100%;
+    float: bottom;
+  }
+  #book {
+    width: 98%;
+    float: none;
+  }
+  .mt-5 {
+    width: 100%;
+  }
+}
