@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= user.name %>'s Ledger</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="css/nav_style.css" rel="stylesheet" type="text/css">
+<link href="css/book_style.css" rel="stylesheet" type="text/css">
+<link href="css/table_style.css" rel="stylesheet" type="text/css">
+<link href="css/popup_style.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body> 
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+          <button class="openbtn" onclick="openNav()">☰</button>
+            <a class="navbar-brand" href="#"><h3><%= user.name %></h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account Actions</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/registercust">New Customer</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0" action="/logout?_method=DELETE" method="POST">
+                        <input type="hidden" id="custId" class="form-control mr-sm-2" name="custId"  data-userid= "<%=user._id%>" value="<%=user._id%>">
+                        <button type="submit" class="btn btn-secondary my-2 my-sm-0">Log Out</button>
+                      </form>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-1" style="width:15vw;" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+        </div>
+  <br>
+  <br>
+        <div id="mySidepanel" class="sidepanel" style="float: left;">
+          </div>        
+
+
+</html>
