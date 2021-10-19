@@ -92,6 +92,84 @@
 </div>
 
 
+ <div class="mt-5" id="bookworm">
+  <div class="book">
+    <div class="coverbottom" id="coverbottom"></div>
+
+    <div id="content_pages">
+    <div class="page leftpage" id="page1">1</div>
+    <div class="page leftpage" id="page3">3</div>
+    <div class="page leftpage" id="page4">4</div>
+    <div class="page leftpage" id="page5">5</div>
+    <div class="page leftpage" id="page6">6</div>
+    <div class="page leftpage" id="page7">7</div>
+    <div class="page leftpage" id="page8">8</div>
+    <div class="page leftpage" id="page2">
+    Dear Diary, Today is going to be different. Today, I'm gonna smile and I'm gonna mean it..
+    <div id="btn1">Click me</div>
+    </div>
+    <div class="page rightpage" id="page9">9</div>
+    <div class="page rightpage" id="page11">11</div>
+    <div class="page rightpage" id="page12">12</div>
+    <div class="page rightpage" id="page13">13</div>
+    <div class="page rightpage" id="page14">14</div>
+    <div class="page rightpage" id="page15">15</div>
+    <div class="page rightpage" id="page16">16</div> 
+    <div class="page rightpage" id="page10">
+
+      <div id="customer_page" style="width:100%">
+          <div id="cust_name">Temp Name</div>
+       <div id="cust_pagenum"> 100 </div>
+       <table id="customer_table" class="table-sm table-hover table-responsive-lg">
+         <thead>
+          <tr>
+            <th rowspan="2" style="width:15%">Date</th>
+            <th rowspan="2" style="width:20%">Parti.</th>
+            <th colspan="2" style="width:12%">Debit</th>
+            <th colspan="2" style="width:12%">Credit</th>
+            <th rowspan="2" style="width:10%">Dr/Cr</th>
+            <th colspan="2" style="width:13%">Balance</th>
+            <th rowspan="2" style="width:2%">=</th>
+          </tr>
+          <tr>
+            <td style="width:10%">Rs.</td>
+            <td style="width:3%">P</td>
+            <td style="width:10%">Rs.</td>
+            <td style="width:3%">P</td>
+            <td style="width:10%">Rs.</td>
+            <td style="width:3%">P</td>
+          </tr>
+         </thead>
+         <tbody>
+  
+           <form id="registertrans" action="" method="POST">
+            <input type="hidden" id="add_trans" name="add_trans">
+            <tr>
+              <td><input type="text" style="font-size: 1vw" id="transdate" name="transdate"></td>
+              <td>
+                <label>
+                <input type="radio" style="font-size: 1vw" id="transdate" name="transdate"/>Credit /
+                </label>
+                <label>
+                <input type="radio" style="font-size: 1vw" id="transdate" name="transdate"/>Debit
+                </label>
+              </td>
+              <td colspan="4"><input type="number" id="transamount" name="transamount"> </td>
+              <td>00</td>
+              <td>Cr</td>
+              <td><button type="submit" id="addtrans" >+</button></td>
+              <td></td>
+            </tr> 
+            </form>                        
+         </tbody>
+       </table>
+      </div>
+      <div id="btn2" style="position: fixed; top: 95%; left: 85%;">Click me</div>
+    </div>
+    </div>
+    <div class="covertop" id="covertop"></div> 
+    </div> 
+
 
 
 </html>
