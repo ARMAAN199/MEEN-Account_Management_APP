@@ -169,7 +169,51 @@
     </div>
     <div class="covertop" id="covertop"></div> 
     </div> 
+  
+  </div>
+
+<input id="val" type="number">  
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+function openNav() {
+    console.log("in func");
+    if(document.getElementById("mySidepanel").style.width != "0px"){
+  document.getElementById("mySidepanel").style.width = "0px"; 
+}
+  else{
+    if(window.innerWidth <= 1050)
+    document.getElementById("mySidepanel").style.width = "100%";  
+    else
+    document.getElementById("mySidepanel").style.width = "20%";      
+}
+}
+</script>
+
+<script>
+  customers = []
+  $(document).ready(function lister() {
+      $.ajax({
+          type:'POST',
+          url: '/get_customer_list/' + $("#custId").data("userid"),
+      }).done(function(result){
+        customers = result;
+         printcustomers(result);
+      }).fail(function(err){
+          console.log(err);
+      })
+
+        $( function() {
+        $( "#transdate" ).datepicker();
+        });
+    })
 
 
+
+
+
+</script>
 
 </html>
