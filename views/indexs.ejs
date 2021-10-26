@@ -210,6 +210,29 @@ function openNav() {
         });
     })
 
+    $('#addtrans').click(function (e) {
+      e.preventDefault();
+      var date = $('#transdate').val();
+      var amount = $('#transamount').val();
+    if($("#add_trans").val() != "")
+      {
+      var custid = $("#add_trans").val();
+      console.log("Adding Transaction to Customer :"+ custid);
+     $.ajax
+        ({
+          type: "POST",
+          url: '/addtransaction/' + custid,
+          data: { "date": date, "amount": amount},
+          success: function (data) {
+            // $('.result').html(data);
+             $('#registertrans')[0].reset();
+            console.log(data);
+          }
+        });
+      }
+    });
+
+
 
 
 
