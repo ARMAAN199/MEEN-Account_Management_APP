@@ -87,3 +87,56 @@ body {
   transform-origin: -4% 100%;
   display: none;
 }
+
+.covertop {
+  animation: bookCover 3s forwards;
+}
+
+#page2,
+#page10 {
+  z-index: 4;
+  font-family: "Dancing Script", cursive;
+}
+
+/*
+.rightpage{
+  animation: extrarightpages 4s forwards;
+  animation-delay: 3s;
+}
+
+
+.coverbottom{
+  /*No Animation for this
+  z-index: 0;
+}
+*/
+
+@keyframes bookCover {
+  0% {
+    z-index: 10;
+  }
+  100% {
+    transform: rotateY(180deg);
+    z-index: 0;
+  }
+}
+
+/*
+@keyframes extrarightpages {
+  100% {  transform: rotateY(180deg);}
+}
+
+@keyframes leftanmtn {
+  0% { z-index: 0; }
+  100% {  transform: rotateY(180deg);
+    z-index: 500;}
+}
+
+@keyframes rightanmtn {
+  0% { z-index: 0; }
+  100% {  transform: rotateY(-180deg);
+    z-index: 500;}
+}
+
+
+*/
