@@ -253,6 +253,49 @@ function openNav() {
   }
 
 
+function displaytrans(x){
+  var custid = customers[x]._id;
+  console.log(custid);
+  $.ajax({
+          type:'POST',
+          url: '/get_customer_transactions/' + custid,
+      }).done(function(result){
+         printtransactions(result,x);
+      }).fail(function(err){
+          console.log(err);
+      })       
+}  
+
+function printtransactions(transactions,x){
+       console.log(transactions)
+       var transtable = document.getElementById("customer_table");
+       document.getElementById("cust_name").innerHTML=customers[x].name;
+       document.getElementById("cust_pagenum").innerHTML = customers[x].pagenumber;
+       $("#customer_table > tr").remove();
+       $("#transrow").remove();
+       $("#add_trans").val(customers[x]._id);
+       $("#edit_delete_cust").remove();
+       $("#cust_name").before("<button id='edit_delete_cust'>☰</button>")
+       $("#edit_delete_cust").click(()=>{
+         edit_del_cust(x);
+       })
+       for (i = 0; i <transactions.length ; i++) {
+        
+        var tr = document.createElement('tr');
+        tr.setAttribute("id","trans_row");
+          printrow(tr, (transactions[i].date).substr(5,5));
+          printrow(tr, "item");
+          printrow(tr, transactions[i].amount);
+          printrow(tr, "00");                                  
+          printrow(tr, transactions[i].amount);
+          printrow(tr, "00");   
+          printrow(tr, "Cr");            
+          printrow(tr, transactions[i].amount);
+          printrow(tr, "00");
+          customer_table.appendChild(tr);     
+        //  $("#registertrans").before(tr);            
+    }
+  }
 
 
 
