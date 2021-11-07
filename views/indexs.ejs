@@ -297,7 +297,63 @@ function printtransactions(transactions,x){
     }
   }
 
+function printrow(tr, content){
+  var td = document.createElement('td');
+          td.innerHTML = content;
+          tr.appendChild(td); 
+}  
 
+function edit_del_cust(x){
+  $("#pop_up_edit").show();
+  $("#close_edit").click(()=>{$("#pop_up_edit").hide();})
+  $("#edit_name").val(customers[x].name)
+  $("#edit_firmname").val(customers[x].firmname)
+  $("#edit_pagenumber").val(customers[x].pagenumber)
+  $("#edit_customer").val(customers[x]._id)
+  $("#delete_cust").click(function(e){
+    e.preventDefault();
+      var custid = $('#edit_customer').val();
+      console.log("Deleting User with Id: " + custid);
+      $.ajax
+        ({
+          type: "DELETE",
+          url: "/registercust/"+custid,
+          success: function (data) {
+            console.log(data);
+          }
+        });      
+  })
+  $("#edit_cust").click(function(e){
+    e.preventDefault();
+      var custid = $('#edit_customer').val();
+      var new_name = $("#edit_name").val();
+      var new_firmname = $("#edit_firmname").val();
+      var new_pagenumber = $("#edit_pagenumber").val();
+      var chgcode = 0;
+      if(new_name != customers[x].name)
+      {
+        chgcode = 1;
+        if(new_pagenumber != customers[x].pagenumber)
+        {
+          chgcode = 3;
+        }     
+      }
+      else if(new_pagenumber != customers[x].pagenumber)
+        {
+          chgcode = 2;
+        }  
+      console.log("Editing User with Id: " + custid);
+      $.ajax
+        ({
+          type: "PUT",
+          url: "/registercust/"+custid+"/"+chgcode,
+          data: { "name":new_name, "firmname":new_firmname, "pagenumber": new_pagenumber},
+          success: function (data) {
+            console.log(data);
+          }
+        });
+  })  
+}
 
 
 </script>
