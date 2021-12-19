@@ -355,6 +355,44 @@ function edit_del_cust(x){
   })  
 }
 
+    var c = document.getElementById("content_pages").children;
+var d = $( ".page" );
+document.getElementById("btn1").onclick = turnrightloop;
+document.getElementById("btn2").onclick = turnleftloop;
+
+
+function turnrightloop(){
+var i =0;
+var times = document.getElementById("val").value;
+  setInterval(()=>{
+    if(i<7 && i<times)
+    {
+    turnright(i);
+    i++;
+    }
+    else
+    return;
+  }, 400)
+}
+
+function turnleftloop(){
+  var i =8;
+  var times = parseInt(document.getElementById("val").value);
+  times += 8 ;
+  setInterval(()=>{
+    if(i<15 && i<times)
+    {
+    turnleft(i);
+    console.log(times + " " + i);
+    i++;
+    }
+    else
+    return;
+  }, 400)
+}
+
+
+
 
 </script>
 
