@@ -391,6 +391,38 @@ function turnleftloop(){
   }, 400)
 }
 
+function turnright(k){
+  c[k].style.zIndex = "5";
+$({degree: 0}).animate({degree: 180}, {
+  duration: 2000,
+  easing: 'linear',
+  complete: function(){c[k].style.zIndex = "2";},
+  step: function () {
+    $("#"+d[k].id).css({transform: 'rotateY(' + this.degree + 'deg)'});
+  }
+})
+}
+
+function turnleft(k){
+  c[k].style.zIndex = "5";
+$({degree: 0}).animate({degree: -180}, {
+  duration: 2000,
+  easing: 'linear',
+  complete: function(){c[k].style.zIndex = "2";},
+  step: function () {
+    $("#"+d[k].id).css({transform: 'rotateY(' + this.degree + 'deg)'});
+  }
+})
+}
+
+
+var top = document.getElementById("covertop");
+top.addEventListener("animationend", typeWriter);
+function typeWriter() {
+  var page = document.getElementsByClassName("rightpage");
+  for(var i=0;i<page.length;i++)
+  {page[i].style.display = "initial";}
+}
 
 
 
