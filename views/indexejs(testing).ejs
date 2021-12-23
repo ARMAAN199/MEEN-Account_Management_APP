@@ -1,117 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title><%= user.name %>'s Ledger</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <title><%= user.name %>'s Ledger</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link href="css/nav_style.css" rel="stylesheet" type="text/css" />
-    <link href="css/book_style.css" rel="stylesheet" type="text/css" />
-    <link href="css/table_style.css" rel="stylesheet" type="text/css" />
-    <link href="css/popup_style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body style="background-color: rgb(255, 255, 255)">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/nav_style.css" rel="stylesheet" type="text/css">
+<link href="css/book_style.css" rel="stylesheet" type="text/css">
+<link href="css/table_style.css" rel="stylesheet" type="text/css">
+<link href="css/popup_style.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body style="background-color: rgb(255, 255, 255);"> 
     <div class="container">
-      <nav
-        class="navbar navbar-expand-md navbar-dark fixed-top"
-        style="background-color: brown"
-      >
-        <button class="openbtn" onclick="openNav()">☰</button>
-        <a class="navbar-brand" href="#"><h3><%= user.name %></h3></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarColor02"
-          aria-controls="navbarColor02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor02">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Account Actions</a
-              >
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/registercust">New Customer</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <form
-                class="form-inline my-2 my-lg-0"
-                action="/logout?_method=DELETE"
-                method="POST"
-              >
-                <input
-                  type="hidden"
-                  id="custId"
-                  class="form-control mr-sm-2"
-                  name="custId"
-                  data-userid="<%=user._id%>"
-                  value="<%=user._id%>"
-                />
-                <button type="submit" class="btn btn-secondary my-2 my-sm-0">
-                  Log Out
-                </button>
-              </form>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-1"
-              style="width: 15vw"
-              type="text"
-              placeholder="Search"
-            />
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-              Search
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: brown;">
+          <button class="openbtn" onclick="openNav()">☰</button>
+            <a class="navbar-brand" href="#"><h3><%= user.name %></h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-          </form>
-        </div>
-      </nav>
-    </div>
-    <br />
-    <br />
-    <div id="mySidepanel" class="sidepanel" style="float: left"></div>
 
-    -->
-  </body>
-</html>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account Actions</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/registercust">New Customer</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0" action="/logout?_method=DELETE" method="POST">
+                        <input type="hidden" id="custId" class="form-control mr-sm-2" name="custId"  data-userid= "<%=user._id%>" value="<%=user._id%>">
+                        <button type="submit" class="btn btn-secondary my-2 my-sm-0">Log Out</button>
+                      </form>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-1" style="width:15vw;" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+        </div>
+  <br>
+  <br>
+        <div id="mySidepanel" class="sidepanel" style="float: left;">
+          </div>        
+
+
+<div id="pop_up_edit">
+<div id="pop_content">
+<span id="close_edit">Close</span>
+<form id="edit_del_customer" action="" method=""></form>
+<div>
+  <span id="edit_del_error"></span>
+  <input type="hidden" id="edit_customer" name="customer">
+  <label for="name">Name</label>
+  <input type="text" id="edit_name" name="name" required>
+</div>
+<div>
+  <label for="firmname">Firm Name</label>
+  <input type="text" id="edit_firmname" name="firmname" required>
+</div>  
+<div>
+  <label for="pagenumber">Page number</label>
+  <input type="number" id="edit_pagenumber" name="pagenumber" required>
+</div> 
+<button type="submit" id="edit_cust">Save</button>
+<button type="submit" id="delete_cust">DELETE</button>
+</form>
+</div>
+</div>
+
+
+<div id="pop_up_edit2">
+  <div id="pop_content2">
+  <span id="close_edit2">Close</span>
+  <form id="edit_del_trans" action="" method=""></form>
+  <div>
+    <span id="edit_trans_error"></span>
+    <input type="hidden" id="edit_trans" name="trans">
+    <label for="name">Date</label>
+    <input type="text" style="font-size: 1vw" id="edit_transdate" name="transdate">
+  </div>
+  <div>
+    <label for="amount">Amount</label>
+    <input type="number" id="edit_transamount" name="transamount">
+  </div>  
+  <div>
+    <label>
+      <input type="radio" style="font-size: 1vw" id="edit_transtype1" name="edit_transtype" value="1"/>Credit /
+      </label>
+      <label>
+      <input type="radio" style="font-size: 1vw" id="edit_transtype0" name="edit_transtype" value="0"/>Debit
+    </label>
+  </div> 
+  <button type="submit" id="edit_transaction" >Save</button>
+  </form>
+  </div>
+  </div>
+
+
+ <div class="mt-5" id="bookworm">
+  <div class="book">
+
+      <div id="customer_page" style="width:100%">
+          <div id="cust_name">Temp Name</div>
+       <div id="cust_pagenum"> 100 </div>
+       <table id="customer_table" class="table-sm table-hover table-responsive-lg">
+         <thead>
+          <tr>
+            <th rowspan="2" style="width:15%">Date</th>
+            <th rowspan="2" style="width:10%">Parti.</th>
+            <th colspan="2" style="width:13%">Debit</th>
+            <th colspan="2" style="width:13%">Credit</th>
+            <th rowspan="2" style="width:10%">Dr/Cr</th>
+            <th colspan="2" style="width:13%">Balance</th>
+            <th rowspan="2" style="width:5%">=</th>
+          </tr>
+          <tr>
+            <td style="width:10%">Rs.</td>
+            <td style="width:3%">P</td>
+            <td style="width:10%">Rs.</td>
+            <td style="width:3%">P</td>
+            <td style="width:10%">Rs.</td>
+            <td style="width:3%">P</td>
+          </tr>
+         </thead>
+         <tbody>
