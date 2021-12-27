@@ -147,3 +147,46 @@
           </tr>
          </thead>
          <tbody>
+  
+           <form id="registertrans" action="" method="POST">
+            <input type="hidden" id="add_trans" name="add_trans">
+            <tr>
+              <td><input type="text" style="font-size: 1vw" id="transdate" name="transdate"></td>
+              <td>00</td> 
+              <td colspan="4"><input type="number" id="transamount" name="transamount"> </td>             
+              <td>
+                <label>
+                <input type="radio" style="font-size: 1vw" id="transtype" name="transtype" value="1"/>Credit /
+                </label>
+                <label>
+                <input type="radio" style="font-size: 1vw" id="transtype" name="transtype" value="0"/>Debit
+                </label>
+              </td>
+              <td>Cr</td>
+              <td><button type="submit" id="addtrans" >+</button></td>
+              <td></td>
+            </tr> 
+            </form>                        
+         </tbody>
+       </table>
+      </div>
+    </div>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+function openNav() {
+    console.log("in func");
+    if(document.getElementById("mySidepanel").style.width != "0px"){
+  document.getElementById("mySidepanel").style.width = "0px"; 
+}
+  else{
+    if(window.innerWidth <= 1050)
+    document.getElementById("mySidepanel").style.width = "100%";  
+    else
+    document.getElementById("mySidepanel").style.width = "20%";      
+}
+}
+</script>
