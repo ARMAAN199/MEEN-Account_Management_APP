@@ -190,3 +190,58 @@ function openNav() {
 }
 }
 </script>
+
+<script>
+  customers = []
+  $(document).ready(function lister() {
+      $.ajax({
+          type:'POST',
+          url: '/get_customer_list/' + $("#custId").data("userid"),
+      }).done(function(result){
+        customers = result;
+         printcustomers(result);
+      }).fail(function(err){
+          console.log(err);
+      })
+
+        $( function() {
+        $( "#transdate" ).datepicker();
+        });
+    })
+
+    $('#addtrans').click(function (e) {
+      e.preventDefault();
+      var date = $('#transdate').val();
+      var amount = $('#transamount').val();
+      var type = $("input[name=transtype]:checked").val()
+    if($("#add_trans").val() != "")
+      {
+      var custid = $("#add_trans").val();
+      console.log("Adding Transaction to Customer :"+ custid);
+     $.ajax
+        ({
+          type: "POST",
+          url: '/addtransaction/' + custid,
+          data: { "date": date, "amount": amount, "type":type},
+          success: function (data) {
+            // $('.result').html(data);
+             $('#registertrans')[0].reset();
+            console.log(data);
+
+          var transtable = document.getElementById("customer_table");
+          var tr = document.createElement('tr');
+          tr.setAttribute("id","trans_row");
+          if (type == 0){
+            var content = [(date).substr(5,5) , "item", amount, "00", "", "", "Cr", "", "00"]
+          }
+          else{
+            var content = [(date).substr(5,5) , "item", "", "", amount, "00", "Cr", "", "00"]            
+          }
+          printrow(tr , content);
+          transtable.appendChild(tr);
+          }
+        });
+      }
+    });
+
+
