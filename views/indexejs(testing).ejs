@@ -245,3 +245,36 @@ function openNav() {
     });
 
 
+    function printcustomers(customers){
+       console.log(customers)
+
+       var customer_list = document.getElementById("mySidepanel");
+       var x=0;
+       for (i = 0; i <(customers.length/3)+1 ; i++) {
+        var tr = document.createElement('ul');
+         for(j=0; j<3 && x<customers.length;j++){
+          var td = document.createElement('li');
+          td.setAttribute("id", customers[x]._id);
+          td.innerHTML = customers[x].name;
+          td.setAttribute("onClick", 'displaytrans("'+ x +'")');
+          x++;
+          tr.appendChild(td);
+         }
+         customer_list.appendChild(tr);            
+    }
+  }
+
+
+function displaytrans(x){
+  var custid = customers[x]._id;
+  console.log(custid);
+  $.ajax({
+          type:'POST',
+          url: '/get_customer_transactions/' + custid,
+      }).done(function(result){
+         printtransactions(result,x);
+      }).fail(function(err){
+          console.log(err);
+      })       
+}  
+
